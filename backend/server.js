@@ -6,11 +6,21 @@ app.use(cors());
 app.use(express.json());
 
 app.post("/register", (req, res) => {
-  const { name, email } = req.body;
-  if (!name || !email) {
-    return res.json({ message: "All fields required" });
-  }
-  res.json({ message: "User registered successfully" });
+  const { name, email, password } = req.body;
+
+  console.log("User Data Received:");
+  console.log("Name:", name);
+  console.log("Email:", email);
+  console.log("Password:", password);
+
+  res.json({ message: "User registered successfully!" });
 });
 
-app.listen(3000, () => console.log("Server running on 3000"));
+app.get("/", (req, res) => {
+  res.send("Backend is running");
+});
+
+app.listen(5000, () => {
+  console.log("Server running on http://localhost:5000");
+});
+
